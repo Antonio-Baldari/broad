@@ -786,7 +786,7 @@ a.company-link:hover {
 }
 
 
-// Hide play/ pause by default
+// Hide play / pause by default
 .no-touch .slide-navigation {
 
     @media only screen and (min-width: 700px) {
@@ -796,11 +796,19 @@ a.company-link:hover {
             visibility: hidden;
         }
 
+        // Show play / pause on hover
         &:hover .pause-toggle {
             opacity: 1;
             visibility: visible;
         }
     }
+}
+
+
+// Forces play / pause to show in edit mode
+.edit .slide-navigation .pause-toggle {
+    opacity: 1;
+    visibility: visible;
 }
 
 
