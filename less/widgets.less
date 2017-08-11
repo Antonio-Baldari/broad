@@ -640,59 +640,50 @@ a.company-link:hover {
 // ----------------
 
 // Slideshow Height
-.slides-list {
-    max-height: 400px;
+.slides-list.cover {
     overflow: hidden;
-    @media @tablet {
-        max-height: 300px;
-    }
-    @media @mobile {
-        max-height: 200px;
-    }
 }
 
-.slides-list,
-.responsiveslideshow .figure {
+.slides-list.cover,
+.responsiveslideshow .cover .figure {
     position: relative;
-    min-height: 400px;
+    height: 450px;
     @media @tablet {
-        min-height: 300px;
+        height: 350px;
     }
     @media @mobile {
-        min-height: 200px;
+        height: 250px;
     }
 }
 
-// Slideshow Images
-// ----------------
+.contain .image {
+    max-height: 700px;
 
-// Use Background-image Method
-.responsiveslideshow .figure {
-    background-size: cover;
-    background-position: center;
+    @media @tablet {
+        max-height: 500px;
+    }
 }
-// Hide Img Element
-.responsiveslideshow .image { display: none; }
+
 
 // Slideshow Image Captions
 // ------------------------
 
 .responsiveslideshow .caption {
-    position: absolute;
-    bottom: 0;
-    width: auto;
     padding: 20px;
-    background-color: none;
+
     @media @tablet {
         padding: 10px;
     }
+
     .image-title,
     .image-description {
         color: @color__body--background;
+
         @media @tablet {
             font-size: bkscale(@font__p--font-size,0.9);
             line-height: bkscale(@font__feature-strapline--line-height,0.9);
         }
+
         @media @mobile {
             font-size: bkscale(@font__p--font-size,0.8);
             line-height: bkscale(@font__feature-strapline--line-height,0.8);
@@ -732,23 +723,20 @@ a.company-link:hover {
     -webkit-align-items: flex-start;
     -ms-flex-align: start;
     align-items: flex-start;
+
     .button.icon:before,
     .button.icon:after {
         margin-right: 0;
         margin-left: 0;
     }
+
     // Removes button text
     .control-text {
         display: none;
     }
+
     // Same height as images
-    min-height: 400px;
-    @media @tablet {
-        min-height: 300px;
-    }
-    @media @mobile {
-        min-height: 200px;
-    }
+    min-height: ~"calc(100% - 44px)";
 }
 
 // Slideshow Navigation for Tablet and Desktop
@@ -791,10 +779,31 @@ a.company-link:hover {
     }
 }
 
+
 // Centre pause button
 .slide-navigation .pause-toggle {
     margin: 0 auto;
 }
+
+
+// Hide play/ pause by default
+.no-touch .slide-navigation {
+
+    @media only screen and (min-width: 700px) {
+
+        .pause-toggle {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &:hover .pause-toggle {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+
 
 // Slideshow Navigation for Mobile
 @media only screen and (max-width:480px) {
